@@ -1,0 +1,29 @@
+<div>
+    <h2>Log In</h2>
+    <div>
+        <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+            <div class="inputs">
+                <label for="username">Username: </label>
+                <input type="text" formControlName="username" [ngClass]="{ 'error-val': this.error != '' }"/>
+                <div *ngIf="submitted && form.username.errors" class="invalid-feedback">
+                    <div class="inputs is-invalid" *ngIf="form.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="inputs password">
+                <label for="password">Password: </label>
+                <input type="password" formControlName="password" [ngClass]="{ 'error-val': this.error != '' }" />
+                <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                    <div class="inputs is-invalid" *ngIf="form.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="submit">
+                <button>
+                    <span></span>
+                    Login
+                </button>
+            </div>
+            <div class="inputs is-invalid">{{error}}</div>
+
+        </form>
+    </div>
+</div>

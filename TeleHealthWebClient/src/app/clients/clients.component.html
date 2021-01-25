@@ -1,0 +1,24 @@
+<h2> Client details </h2>
+<div class="card-small dataOptions">
+    <button class="items" (click)="onRefresh()">Refresh</button>
+</div>
+<table class="clients">
+    <tr class="titlerow">
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Postal Code</th>
+    </tr>
+    <tr *ngFor ="let client of tempClients" 
+    [class.selected]="client === selectedClient"
+    (click) = "onSelect(client)" class="rows">
+        <th>{{client.firstName}}  {{client.middleName}} {{client.lastName}}</th>
+        <th>{{client.phoneNumber}}</th>
+        <th *ngIf="client.address == ''; else elseBlock">{{client.address}}, {{client.city}}, {{client.province}}</th>
+        <ng-template #elseBlock><th></th></ng-template>
+        <!-- <th>{{client.address}}, {{client.city}}, {{client.province}}</th> -->
+        <th>{{client.postalCode}}</th>
+    </tr>
+</table>
+
+<app-client-details [chosenClient]="selectedClient"></app-client-details>

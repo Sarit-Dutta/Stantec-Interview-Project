@@ -1,0 +1,17 @@
+<div *ngIf="chosenClient.Id != 0">
+    <h2>{{chosenClient.firstName}}'s Details </h2>
+    <div>
+        <table class="clients">
+            <tr class="titlerow">
+                <th>Concerns</th>
+                <th>Response</th>
+            </tr>
+            <tr class="detailrows">
+                <th *ngIf="chosenClient.concerns != ''; else elseBlock">{{chosenClient.concerns}}</th>
+                <ng-template #elseBlock><th></th></ng-template>
+                <th *ngIf="chosenClient.concerns != ''; else elseBlock">{{chosenClient.response}}</th>
+                <ng-template #elseBlock><th></th></ng-template>
+            </tr>
+        </table>
+    </div>
+</div>
